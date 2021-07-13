@@ -112,23 +112,3 @@ class life_board
     }
     
 }
-
-//public class GameOfLife{
-//    public static void main(String[] args) {
-//        life_board gb= new life_board(15);
-//        gb.initialize_oscillator_board();
-//        gb.print_board();
-//        gb.nextGeneration();
-//        System.out.println("Next Generation 1");
-//        gb.print_board();
-//        gb.nextGeneration();
-//        System.out.println("Next Generation 2");
-//        gb.print_board();
-//        gb.nextGeneration();
-//        System.out.println("Next Generation 3");
-//        gb.print_board();
-//        gb.nextGeneration();
-//        System.out.println("Next Generation 4");
-//        gb.print_board();
-//    }
-//}

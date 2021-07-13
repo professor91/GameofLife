@@ -175,12 +175,3 @@ public class board implements WindowListener, ActionListener{
             }
         }
     }
-    
-
-
-    // public static void main(String[] args) {
-    //     board b = new board(40);
-    //     b.new_board();
-    // }
-    
-}

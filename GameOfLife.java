@@ -61,44 +61,53 @@ class life_board
 
     // function to move to next generation
     void nextGeneration(){
-
+        int aliveNeighbours = 0;
+        
         // Loop through every cell
-        for (int i = 1; i < num - 1; i++){
-            for (int j = 1; j < num - 1; j++){
+        for (int i = 0; i < num; i++){
+            for (int j = 0; j < num; j++){
+                aliveNeighbours= 0;
                 
                 // finding no Of Neighbours that are alive
-                int aliveNeighbours = 0;            
+                for(int k = -1; k < 2; k++){
+                    for(int l = -1; l < 2; l++){
+                        // handling negative bounds
+                        try{
+                            aliveNeighbours += old_board[i+k][j+l];
+                        }
+                        catch(ArrayIndexOutOfBoundsException e){
+                            // System.out.println(e);
+                            continue;
+                        }
+                    }
+                }
 
-                aliveNeighbours += old_board[i][j-1];
-                aliveNeighbours += old_board[i][j+1];
+                // removing the cell itself from the count
+                aliveNeighbours -= old_board[i][j];
                 
-                aliveNeighbours += old_board[i-1][j-1];
-                aliveNeighbours += old_board[i-1][j];
-                aliveNeighbours += old_board[i-1][j+1];
-                
-                aliveNeighbours += old_board[i+1][j-1];
-                aliveNeighbours += old_board[i+1][j];
-                aliveNeighbours += old_board[i+1][j+1];
-
                 // Implementing the Rules of Life
                 // Cell is alive and lonely --> dies
-                if ((old_board[i][j] == 1) && (aliveNeighbours < 2))
+                if ((old_board[i][j] == 1) && (aliveNeighbours < 2)){
                     new_board[i][j] = 0;
-                
-                // Cell is alive and in stable state - lives
-                else if((old_board[i][j] == 1) && (aliveNeighbours == 2 || aliveNeighbours == 3))
-                    old_board[i][j] = new_board[i][j];
+                }
 
                 // Cell is alive and over populated --> dies
-                else if ((old_board[i][j] == 1) && (aliveNeighbours > 3))
+                else if ((old_board[i][j] == 1) && (aliveNeighbours > 3)){
                     new_board[i][j] = 0;
+                }
 
                 // Cell is dead and reproduce --> comes to life
-                else if ((old_board[i][j] == 0) && (aliveNeighbours == 3))
+                else if ((old_board[i][j] == 0) && (aliveNeighbours == 3)){
                     new_board[i][j] = 1;
                 }
+            }
         }
-        old_board = new_board;
+
+        for(int i= 0; i< num; i++){
+            for(int j= 0; j< num; j++){
+                old_board[i][j] = new_board[i][j];
+            }
+        }
     }
 
     public void print_board(){

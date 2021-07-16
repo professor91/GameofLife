@@ -174,4 +174,5 @@ public class board implements WindowListener, ActionListener{
                 }
             }
         }
-    }
+    }   
+}

@@ -153,3 +153,11 @@ class frame implements WindowListener, ActionListener {
         System.out.println("Game GUI Deiconified!");
     }
 }
+
+public class game_gui{   
+
+    public static void main(String[] args) {
+        frame f = new frame();
+        f.new_frame();
+    }
+}
